@@ -1,2 +1,2 @@
 # LD-45
-Start with nothing.
+"Nothing to Pebbles"
