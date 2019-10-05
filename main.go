@@ -43,52 +43,6 @@ func main() {
 	}
 
 	fmt.Println("Thank you for Playing \"Nothing to Pebbles\"")
-
-	// 	var stillPlaying = true
-	// for stillPlaying == true {
-	// getNumberOfWords(&wordsPerTrial)
-
-	// prompt = ""
-	// var i uint64
-	// for i < wordsPerTrial {
-	// prompt += genWord()
-	// prompt += " "
-
-	// i++
-	// }
-	// fmt.Println(prompt)
-	// fmt.Println()
-	// fmt.Println("Please hit enter to continue.")
-	// getUserReply() // Wait for user okay
-
-	// // Clear the Screen
-	// clearScreen()
-
-	// // Get user input
-	// fmt.Println("Please Enter the Words:")
-	// reply = getUserReply()
-
-	// // Compare to prompt to determine if won; check (len(prompt) - 1) / 5 to determine score (the -1 is for the space at the end)
-	// // Or just check wordsPerTrial
-	// // prompt = strings.Replace(prompt, " ", "", -1)
-	// // reply = strings.Replace(reply, " ", "", -1)
-	// if strings.Replace(prompt, " ", "", -1) == strings.Replace(reply, " ", "", -1) {
-	// fmt.Println("Congratulations! You have memorized", wordsPerTrial, "nonce constructions!")
-	// } else {
-	// fmt.Println("Sorry, you did not succeed in memorizing", wordsPerTrial, "nonce constructions. Here are is the comparison:")
-	// fmt.Println(prompt)
-	// fmt.Println(reply)
-	// }
-
-	// // Ask if the user wishes to play again
-	// fmt.Println("Would you like to play again? (Y/n)")
-	// userWantsToPlay := getUserReply()
-
-	// if userWantsToPlay != "Y" && userWantsToPlay != "y" {
-	// stillPlaying = false
-	// fmt.Println("Goodbye, and thank you for playing!")
-	// }
-	// }
 }
 
 func playGame(goal int, cin *bufio.Reader) {
