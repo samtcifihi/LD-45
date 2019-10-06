@@ -65,16 +65,37 @@ func playGame(goal int, cin *bufio.Reader) {
 	// Create New RNG
 	randGen := rand.New(rand.NewSource(hashedSeed))
 
+	var cups [3]int
+	cupi := 0
+
 	credits := 0
+	bet := 0
+	correctPebble := 0
+
+	// Start gameTimer
 
 	// Main Game Loop
 	for credits >= 0 && credits < goal {
 		// Create array of cups
-		var cups [3]int
-		cupi := 0
+		cupi = 0
 		for cupi < 3 {
 			cups[cupi] = randGen.Intn(10)
 			cupi++
+		}
+
+		// Determine the Bet
+		if credits == 0 {
+			fmt.Println("Looks like you don't have enough cr. to play.")
+			fmt.Println("Tell you what, how about you play a game on me.")
+			bet = 6
+		} else if credits > 0 && credits < 6 {
+			// bet = getUserInt(cin, 1, credits)
+			fmt.Println("Please enter a bet amount up to your total cr..")
+			bet = getUserInt(cin, 1, credits)
+		} else {
+			// bet = getUserInt(cin, 1, 6)
+			fmt.Println("Please enter a bet amount of up to 6 cr..")
+			bet = getUserInt(cin, 1, 6)
 		}
 
 		// Show Pebbles
@@ -87,16 +108,58 @@ func playGame(goal int, cin *bufio.Reader) {
 		// Start Timer
 
 		// Show a transposition.
+		// Update cups
 
 		cin.ReadString('\n')
 		clearScreen()
 
 		// delay := timer.stop()
+
+		for i := 0; i < 11; i++ {
+			// Show 11 more transpositions
+			// Start timer(delay)
+			// Show a transposititon
+			// Update cups
+
+			// When timer ends...
+			clearScreen()
+		}
+
+		// Test the user to select the correct cup
+		correctPebble = randGen.Intn(3) + 1
+		fmt.Printf("What is under cup %v?\n", correctPebble)
+		if getUserInt(cin, 0, 9) == cups[correctPebble-1] {
+			// You Win the round
+			credits = credits + bet
+		} else {
+			// You Lose the round
+			credits = credits - bet
+		}
+
+		fmt.Println("Your current cr.s:", credits)
 	}
+
+	// Stop gameTimer
+
 	// Post-game
 
+	fmt.Println()
+	fmt.Println()
+
+	if credits < 0 {
+		// You Lose
+		fmt.Println("You Lost. Sorry.")
+	} else {
+		// You Win
+		fmt.Println("You Win!")
+	}
+
 	// Show the user their seed if they want to play the same level again.
-	fmt.Printf("Your seed: \"%v\"\n", origSeed)
+	fmt.Printf("Your seed was: \"%v\"\n", origSeed)
+	// Println gameTimer value
+
+	fmt.Println()
+	fmt.Println()
 }
 
 // Gets an int from the user
