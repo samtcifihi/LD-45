@@ -105,7 +105,8 @@ func playGame(goal int, cin *bufio.Reader) {
 		cin.ReadString('\n')
 		clearScreen()
 
-		// Start Timer
+		// Start Timer to time the speed of transpositions.
+		delayTimer := time.Now()
 
 		// Show a transposition.
 		fmt.Println(transposeArray(&cups, randGen))
@@ -113,17 +114,17 @@ func playGame(goal int, cin *bufio.Reader) {
 		cin.ReadString('\n')
 		clearScreen()
 
-		// delay := timer.stop()
+		// delay := The time it took to go through the first transposition.
+		delay := time.Since(delayTimer)
 
-		for i := 0; i < 11; i++ {
-			// Show 11 more transpositions
-
-			// Start timer(delay)
+		for i := 0; i < 5; i++ {
+			// Show 5 more transpositions
 
 			// Show a transposititon
-			// fmt.Println(transposeArray(&cups, randGen))
+			fmt.Println(transposeArray(&cups, randGen))
 
-			// When timer ends...
+			time.Sleep(delay)
+
 			clearScreen()
 		}
 
