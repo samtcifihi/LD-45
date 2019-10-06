@@ -17,7 +17,7 @@ func main() {
 
 	// Give Rules/Intro
 
-	// Main Game Loop
+	// Main Menu Loop
 	userResponse := 0
 	for userResponse != 3 {
 		// Menu
@@ -65,16 +65,34 @@ func playGame(goal int, cin *bufio.Reader) {
 	// Create New RNG
 	randGen := rand.New(rand.NewSource(hashedSeed))
 
-	// Create First array of cups
-	var cups [3]int
-	cupi := 0
-	for cupi < 3 {
-		cups[cupi] = randGen.Intn(10)
-		cupi++
+	credits := 0
+
+	// Main Game Loop
+	for credits >= 0 && credits < goal {
+		// Create array of cups
+		var cups [3]int
+		cupi := 0
+		for cupi < 3 {
+			cups[cupi] = randGen.Intn(10)
+			cupi++
+		}
+
+		// Show Pebbles
+		fmt.Println(cups)
+
+		// Proceed
+		cin.ReadString('\n')
+		clearScreen()
+
+		// Start Timer
+
+		// Show a transposition.
+
+		cin.ReadString('\n')
+		clearScreen()
+
+		// delay := timer.stop()
 	}
-
-	// Show Pebbles
-
 	// Post-game
 
 	// Show the user their seed if they want to play the same level again.
