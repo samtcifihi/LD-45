@@ -108,7 +108,7 @@ func playGame(goal int, cin *bufio.Reader) {
 		// Start Timer
 
 		// Show a transposition.
-		// Update cups
+		fmt.Println(transposeArray(&cups, randGen))
 
 		cin.ReadString('\n')
 		clearScreen()
@@ -117,9 +117,11 @@ func playGame(goal int, cin *bufio.Reader) {
 
 		for i := 0; i < 11; i++ {
 			// Show 11 more transpositions
+
 			// Start timer(delay)
+
 			// Show a transposititon
-			// Update cups
+			// fmt.Println(transposeArray(&cups, randGen))
 
 			// When timer ends...
 			clearScreen()
@@ -208,6 +210,26 @@ func getUserReply(cin *bufio.Reader) string {
 	userReply = strings.Replace(userReply, "\n", "", -1)
 
 	return userReply
+}
+
+// Takes a 3 element array, swaps two, and returns the indexes (+ 1) of the ones it swapped
+func transposeArray(array *[3]int, randGen *rand.Rand) [2]int {
+	var transposition [2]int
+	transposition[0] = randGen.Intn(3)
+	transposition[1] = randGen.Intn(3)
+
+	for transposition[0] == transposition[1] {
+		transposition[1] = randGen.Intn(3)
+	}
+
+	// Swap the relevant elements
+	array[transposition[0]], array[transposition[1]] = array[transposition[1]], array[transposition[0]]
+
+	// Prepare for the End-user
+	transposition[0] = transposition[0] + 1
+	transposition[1] = transposition[1] + 1
+
+	return transposition
 }
 
 // There are better ways to do this, so it's in it's own function for easy bebetterment later.
