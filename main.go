@@ -73,6 +73,7 @@ func playGame(goal int, cin *bufio.Reader) {
 	correctPebble := 0
 
 	// Start gameTimer
+	gameTimer := time.Now()
 
 	// Main Game Loop
 	for credits >= 0 && credits < goal {
@@ -109,7 +110,7 @@ func playGame(goal int, cin *bufio.Reader) {
 		delayTimer := time.Now()
 
 		// Show a transposition.
-		fmt.Println(transposeArray(&cups, randGen))
+		fmt.Println("tr. 1:", transposeArray(&cups, randGen))
 
 		cin.ReadString('\n')
 		clearScreen()
@@ -121,7 +122,7 @@ func playGame(goal int, cin *bufio.Reader) {
 			// Show 5 more transpositions
 
 			// Show a transposititon
-			fmt.Println(transposeArray(&cups, randGen))
+			fmt.Printf("tr. %v: %v", i+2, transposeArray(&cups, randGen))
 
 			time.Sleep(delay)
 
@@ -143,6 +144,7 @@ func playGame(goal int, cin *bufio.Reader) {
 	}
 
 	// Stop gameTimer
+	gameTime := time.Since(gameTimer)
 
 	// Post-game
 
@@ -157,9 +159,11 @@ func playGame(goal int, cin *bufio.Reader) {
 		fmt.Println("You Win!")
 	}
 
+	// Println gameTimer value
+	fmt.Println("You took", gameTime, "to earn", goal, "cr..")
+
 	// Show the user their seed if they want to play the same level again.
 	fmt.Printf("Your seed was: \"%v\"\n", origSeed)
-	// Println gameTimer value
 
 	fmt.Println()
 	fmt.Println()
@@ -201,6 +205,8 @@ func getUserInt(cin *bufio.Reader, min int, max int) int {
 
 	} // User has entered a valid choice
 
+	fmt.Println()
+
 	return userInt
 }
 
@@ -209,6 +215,8 @@ func getUserReply(cin *bufio.Reader) string {
 
 	userReply, _ := cin.ReadString('\n')
 	userReply = strings.Replace(userReply, "\n", "", -1)
+
+	fmt.Println()
 
 	return userReply
 }
