@@ -16,6 +16,10 @@ func main() {
 	cin := bufio.NewReader(os.Stdin)
 
 	// Give Rules/Intro
+	fmt.Println("Welcome to \"Nothing to Pebbles\"!")
+	fmt.Println("You will be shown the numbers under each of three cups numbered 1, 2, and 3.")
+	fmt.Println("Then, you will be shown pairs of number which indicate which two cups have been swapped with eachother. You will have to hit enter once you've accounted for the first swap, after that each swap will be shown only for the amount of time you took on the first one, so give yourself enough time.")
+	fmt.Println("After that, you will be asked what the value of a certain cup is after the six swaps. If correct you win the round, otherwise you lose the round.")
 
 	// Main Menu Loop
 	userResponse := 0
@@ -144,7 +148,7 @@ func playGame(goal int, cin *bufio.Reader) {
 	}
 
 	// Stop gameTimer
-	gameTime := time.Since(gameTimer)
+	gameTime := time.Since(gameTimeThose where the games available here. So those were played. As to why we play go. We do it because it’s there. It’s a completely pointless activity like climbing or football. A lot of good can come out of it. But it has no purpose other than being a fun activity. Back in the day there was also a lot more time to spend doing r)
 
 	// Post-game
 
